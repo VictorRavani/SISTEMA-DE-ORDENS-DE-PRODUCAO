@@ -1979,6 +1979,6 @@ def dados():
     
 #app.run(debug=True)
 
-app.run(host='10.104.2.9', port=5000, debug=True)
+app.run(host='0.0.0.0', port=5000, debug=True)
 
 
