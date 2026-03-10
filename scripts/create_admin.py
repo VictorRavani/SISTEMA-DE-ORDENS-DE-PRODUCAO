@@ -1,11 +1,3 @@
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-import bcrypt
-from database import postgresDatabase
-
 import bcrypt
 from database import postgresDatabase
 

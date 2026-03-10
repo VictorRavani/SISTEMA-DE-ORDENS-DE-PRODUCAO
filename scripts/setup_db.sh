@@ -11,6 +11,6 @@ EOF
 
 echo "Importando estrutura..."
 
-psql -U $DB_USER -d $DB_NAME -f database/schema.sql
+psql -U $DB_USER -d $DB_NAME -f database_backup/schema.sql
 
 echo "Banco pronto."
