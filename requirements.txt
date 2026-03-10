@@ -8,6 +8,6 @@ requests==2.31.0        # Atualizado para uma versão mais recente
 python-dateutil==2.8.2
 pyodbc==5.1.0
 pandas==2.2.2
-numpy==1.21.6
-uwsgi==2.0.19.1
+numpy==1.26.4
+uwsgi==2.0.23
 Jinja2==3.0.3
