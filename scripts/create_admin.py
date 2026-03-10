@@ -11,11 +11,18 @@ senha_hash = bcrypt.hashpw(
     bcrypt.gensalt()
 ).decode()
 
+# remove admin antigo se existir
+db.writeRaw(
+    "DELETE FROM usuarios WHERE usuario = %s",
+    (usuario,)
+)
+
+# cria admin novo
 sql = """
 INSERT INTO usuarios (usuario, senha, privilegio)
 VALUES (%s, %s, %s)
 """
 
-db.writeRaw(sql, (usuario, senha_hash, 2))
+db.writeRaw(sql, (usuario, senha_hash, 3))
 
-print("Usuário admin criado.")
+print("Usuário admin resetado.")
