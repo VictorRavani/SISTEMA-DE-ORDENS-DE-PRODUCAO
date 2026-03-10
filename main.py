@@ -1977,8 +1977,8 @@ def dados():
         # Retorne uma mensagem de erro
         return f"Erro ao obter dados: {str(e)}"
     
-app.run(debug=True)
+#app.run(debug=True)
 
-#app.run(host='10.104.2.9', port=5000, debug=True)
+app.run(host='10.104.2.9', port=5000, debug=True)
 
 
