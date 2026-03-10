@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  senai-compose-postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - senai-postgres-storage:/var/lib/postgresql/data
+    networks:
+      - senai-compose-network
+
+  senai-compose-webapp:
+    #image: lucasvss90/quantum:1.0.14
+    image: webapp:1.0.0
+      #build:
+      #context: .
+      #dockerfile: Dockerfile  # Referência ao Dockerfile que você criou
+    volumes:
+      - type: bind
+        source: /home/flexfab/senai
+        target: /app/instrucoes
+    environment:
+      DBUSER: "postgres"
+      DBPASSWORD: "postgres"
+      DBNAME: "postgres"
+      DBHOST: "senai-compose-postgres"
+      SECRETKEY: "e182c9c42f3c11ebadc10242ac120002"
+      SQLSERVER_USER: "senai"
+      SQLSERVER_PASSWORD: "senai@2025"
+      SQLSERVER_HOST: "192.168.19.173"
+      SQLSERVER_DBNAME: "P12_PRD"
+      SQLSERVER_PORT: "1433"
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      - senai-compose-postgres
+    networks:
+      - senai-compose-network
+
+networks: 
+  senai-compose-network:
+    driver: bridge
+
+volumes:
+  senai-postgres-storage:
+    external: true
+

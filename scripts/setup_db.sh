@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DB_NAME="db_ARO"
+DB_USER="postgres"
+
+echo "Criando banco..."
+
+sudo -u postgres psql <<EOF
+CREATE DATABASE $DB_NAME;
+EOF
+
+echo "Importando estrutura..."
+
+psql -U $DB_USER -d $DB_NAME -f database/schema.sql
+
+echo "Banco pronto."
